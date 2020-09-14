@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon ./api/api.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,16 @@
   "bugs": {
     "url": "https://github.com/wdhafin/eFishery-test/issues"
   },
-  "homepage": "https://github.com/wdhafin/eFishery-test#readme"
+  "homepage": "https://github.com/wdhafin/eFishery-test#readme",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "chalk": "^4.1.0",
+    "core-js": "^2.6.11",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-routes-mapper": "^1.0.2",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.28.0",
+    "nodemon": "^2.0.4"
+  }
 }
