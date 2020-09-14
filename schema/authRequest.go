@@ -29,6 +29,14 @@ type Token struct {
 	TTL     string `json:"ttl"`
 }
 
+// JWTExtract is
+type JWTExtract struct {
+	Name      string `json:"name"`
+	Phone     string `json:"phone"`
+	Role      string `json:"role"`
+	Timestamp int64  `json:"timestamp"`
+}
+
 // JWTMyClaims is
 type JWTMyClaims struct {
 	Name      string `json:"name"`

@@ -27,6 +27,9 @@ func EchoJWTAccessAuth() echo.MiddlewareFunc {
 		SuccessHandler: func(c echo.Context) {
 			userJWT := helper.GetAuthenticatedUser(c.Get("user").(*jwt.Token))
 			c.Set("Name", userJWT.Name)
+			c.Set("Phone", userJWT.Phone)
+			c.Set("Role", userJWT.Role)
+			c.Set("Timestamp", userJWT.Timestamp)
 		},
 	})
 }

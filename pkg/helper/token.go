@@ -99,7 +99,7 @@ func GetAuthenticatedUser(token *jwt.Token) schema.JWTMyClaims {
 		Name:      claims["name"].(string),
 		Phone:     claims["phone"].(string),
 		Role:      claims["role"].(string),
-		Timestamp: claims["timestamp"].(int64),
+		Timestamp: int64(claims["timestamp"].(float64)),
 	}
 
 	return jClaim

@@ -24,6 +24,9 @@ func NewAuthHandler(e *echo.Echo, us usecase.AuthUsecase) {
 
 	g.POST("/register", handler.Register)
 	g.POST("/login", handler.Login)
+
+	h := e.Group("/" + viper.GetString("route.restricted") + "/auth")
+	h.GET("/extract_jwt", handler.Extract)
 }
 
 // Register will
@@ -72,4 +75,20 @@ func (cHandler *AuthHandler) Login(c echo.Context) error {
 	copier.Copy(&loginResponse, &token)
 
 	return utils.SuccessResponse(c, loginResponse)
+}
+
+// Extract will
+func (cHandler *AuthHandler) Extract(c echo.Context) error {
+	name := c.Get("Name").(string)
+	phone := c.Get("Phone").(string)
+	role := c.Get("Role").(string)
+	timestamp := c.Get("Timestamp").(int64)
+
+	jwtExtract := new(schema.JWTExtract)
+	jwtExtract.Name = name
+	jwtExtract.Phone = phone
+	jwtExtract.Role = role
+	jwtExtract.Timestamp = timestamp
+
+	return utils.SuccessResponse(c, jwtExtract)
 }
