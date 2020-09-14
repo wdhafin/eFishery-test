@@ -1,0 +1,10 @@
+pg:
+  host: "127.0.0.1"
+  port: "5432"
+  dbname: ""
+  user: ""
+  password: ""
+  debug: false
+server:
+  name: "auth"
+  port: ":8080"
