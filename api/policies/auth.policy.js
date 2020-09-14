@@ -38,23 +38,12 @@ module.exports = (req, res, next) => {
   return JWTService().verify(tokenToVerify, async (err, thisToken) => {
     if (err) {
       return res.status(401).json({
-        message: err.message,
+        message: 'invalid or expired token',
         data: null,
       });
     }
-    // const user = await User.findByPk(thisToken.id, {
-    //   include: [{ model: Role, required: true }],
-    //   logging: false,
-    // });
-    // // console.log("user", user);
-    // if (user) {
-    //   req.User = user;
+
+    req.Token = thisToken;
     return next();
-    // } else {
-    //   return res.status(401).json({
-    //     message: 'Unauthorized',
-    //     data: null,
-    //   });
-    // }
   });
 };
